@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.CategoryMapper">
+    <insert id="add" parameterType="com.example.entity.Category">
+        insert into category(name) values (#{name})
+    </insert>
+    <update id="updateById">
+        update category set name=#{name}
+        <where>
+            id=#{id}
+        </where>
+    </update>
+    <delete id="deleteById">
+        delete from category
+        <where> id=#{id} </where>
+    </delete>
+    <select id="selectAll" resultType="com.example.entity.Category">
+        select * from category
+        <where>
+            <if test="name !=null">and name like concat ('%', #{name} ,'%')</if>
+        </where>
+        order by id desc
+    </select>
+</mapper>

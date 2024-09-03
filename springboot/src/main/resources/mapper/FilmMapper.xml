@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.FilmMapper">
+    <insert id="add" parameterType="com.example.entity.Film">
+        insert into film(name, cover, descr, year, actors, director, duration, category_id, country, language, imdb)
+        values (#{name}, #{cover}, #{descr}, #{year}, #{actors}, #{director}, #{duration}, #{categoryId}, #{country},
+                #{language}, #{imdb})
+    </insert>
+    <update id="updateById">
+        update film set
+        name=#{name},cover=#{cover}, descr=#{descr}, year=#{year}, actors=#{actors}, director=#{director},
+        duration=#{duration},
+        category_id=#{categoryId}, country=#{country}, language=#{language}, imdb=#{imdb}
+
+        <where>
+            id=#{id}
+        </where>
+    </update>
+    <delete id="deleteById">
+        delete from film
+        <where> id=#{id} </where>
+    </delete>
+    <select id="selectAll" resultType="com.example.entity.Film">
+        select * from film
+        <where>
+            <if test="name !=null">and name like concat ('%', #{name} ,'%')</if>
+        </where>
+        order by id desc
+    </select>
+</mapper>
