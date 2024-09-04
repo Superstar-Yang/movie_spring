@@ -14,6 +14,33 @@ public class Film {
     private String imdb;
     private String director;
     private int categoryId;
+    private double score;
+    private Integer commentNum;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    private String categoryName;
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public Integer getCommentNum() {
+        return commentNum;
+    }
+
+    public void setCommentNum(Integer commentNum) {
+        this.commentNum = commentNum;
+    }
 
     public int getCategoryId() {
         return categoryId;

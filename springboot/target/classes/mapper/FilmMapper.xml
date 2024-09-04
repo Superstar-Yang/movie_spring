@@ -20,13 +20,21 @@
     </update>
     <delete id="deleteById">
         delete from film
-        <where> id=#{id} </where>
+        <where>id=#{id}</where>
     </delete>
     <select id="selectAll" resultType="com.example.entity.Film">
-        select * from film
+        select film.*,category.name as categoryName from film
+        left join category on film.category_id=category.id
         <where>
             <if test="name !=null">and name like concat ('%', #{name} ,'%')</if>
+            <if test="categoryId !=null">and film.category_id = #{categoryId}</if>
         </where>
-        order by id desc
+        order by film.id desc
+    </select>
+    <select id="selectById" resultType="com.example.entity.Film">
+        select film.*, category.name as categoryName
+        from film
+                 left join category on film.category_id = category.id
+        where film.id = #{id}
     </select>
 </mapper>

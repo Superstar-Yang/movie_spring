@@ -40,19 +40,27 @@ const handleFileUpload = (file) => {
 
 const emit = defineEmits(["updateUser"])
 // 把当前修改的用户信息存储到后台数据库
-const save = () => {
-  if (data.user.role === 'ADMIN') {
-    request.put('/admin/update', data.user).then(res => {
-      if (res.code === '200') {
-        ElMessage.success('更新成功')
-        //把更新后的用户信息存储到缓存
-        localStorage.setItem('system-user', JSON.stringify(data.user))
-        emit('updateUser')
-      } else {
-        ElMessage.error(res.msg)
-      }
-    })
+const save = async () => {
+data.user.role === 'ADMIN' && await request.put('/admin/update', data.user).then(res => {
+  if (res.status === 200) {
+    ElMessage.success('更新成功')
+    //把更新后的用户信息存储到缓存
+    localStorage.setItem('system-user', JSON.stringify(data.user))
+    emit('updateUser')
+  } else {
+    ElMessage.error(res.statusText)
   }
+})
+  data.user.role === 'ROLE_USER' && await request.put('/user/update', data.user).then(res => {
+    if (res.status === 200) {
+      ElMessage.success('更新成功')
+      //把更新后的用户信息存储到缓存
+      localStorage.setItem('system-user', JSON.stringify(data.user))
+      emit('updateUser')
+    } else {
+      ElMessage.error(res.statusText)
+    }
+  })
 }
 </script>
 

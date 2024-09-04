@@ -43,6 +43,17 @@ public class FilmController {
         List<Film> list = filmService.selectAll(film);
         return Result.success(list);
     }
+    @GetMapping("/selectById/{id}")
+    public Result selectById(@PathVariable Integer id) {
+        Film film = filmService.selectById(id);
+        return Result.success(film);
+    }
+
+    @GetMapping("/selectRecommend/{id}")
+    public Result selectRecommend(@PathVariable Integer id) {
+        List<Film> list = filmService.selectRecommend(id);
+        return Result.success(list);
+    }
 
     /*
      * 分页查询

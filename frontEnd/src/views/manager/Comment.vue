@@ -68,7 +68,8 @@ const data = reactive({
   form: {},
   tableData: [],
   filmName: null,
-  commentContext: null
+  commentContext: null,
+  user: JSON.parse(localStorage.getItem('system-user') || '{}'),
 })
 
 // 分页查询
@@ -77,7 +78,8 @@ const load = () => {
     params: {
       pageNum: data.pageNum,
       pageSize: data.pageSize,
-      filmName: data.filmName
+      filmName: data.filmName,
+      userId: data.user.role === 'ADMIN' ? null : data.user.id
     }
   }).then(res => {
     data.tableData = res.data?.list

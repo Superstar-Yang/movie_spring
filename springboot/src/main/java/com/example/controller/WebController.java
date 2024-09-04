@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.common.Result;
 import com.example.entity.Account;
 import com.example.service.AdminService;
+import com.example.service.UserService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,8 @@ public class WebController {
 
     @Resource
     private AdminService adminService;
+    @Resource
+    private UserService userService;
     /**
      * 默认请求接口
      */
@@ -27,6 +30,9 @@ public class WebController {
     public Result login(@RequestBody Account account) {
         if ("ADMIN".equals(account.getRole())) {
             return Result.success(adminService.login(account));
+        }
+        if ("ROLE_USER".equals(account.getRole())) {
+            return Result.success(userService.login(account));
         }
         return Result.success();
     }
@@ -46,6 +52,9 @@ public class WebController {
     public Result updatePassword(@RequestBody Account account) {
         if ("ADMIN".equals(account.getRole())) {
             adminService.updatePassword(account);
+        }
+        if ("ROLE_USER".equals(account.getRole())) {
+            userService.updatePassword(account);
         }
         return Result.success();
     }

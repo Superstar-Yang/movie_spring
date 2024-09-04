@@ -19,10 +19,12 @@
         <where> id=#{id} </where>
     </delete>
     <select id="selectAll" resultType="com.example.entity.Comment">
-        select comment.*, film.name as filmName from comment
+        select comment.*, film.name as filmName, user.name as userName from comment
         left join film on comment.film_id=film.id
+        left join user on comment.user_id=user.id
         <where>
             <if test="filmName !=null">and film.name like concat ('%', #{filmName} ,'%')</if>
+            <if test="userId !=null">and comment.user_id =#{userId}</if>
         </where>
         order by comment.id desc
     </select>

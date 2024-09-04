@@ -12,6 +12,7 @@
         <el-form-item prop="role">
           <el-select size="large" style="width: 100%" v-model="data.form.role">
             <el-option value="ADMIN" label="管理员"></el-option>
+            <el-option value="ROLE_USER" label="普通用户"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
@@ -53,12 +54,12 @@
       if (valid) {
         // 调用后台的接口
         request.post('/login', data.form).then(res => {
-          if (res.code === '200') {
+          if (res.status === 200) {
             ElMessage.success("登录成功")
             router.push('/')
             localStorage.setItem('system-user', JSON.stringify(res.data))
           } else {
-            ElMessage.error(res.msg)
+            ElMessage.error(res.statusText)
           }
         })
       }

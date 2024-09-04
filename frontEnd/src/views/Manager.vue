@@ -29,7 +29,11 @@
             <el-icon><HomeFilled /></el-icon>
             <span>电影评论</span>
           </el-menu-item>
-          <el-sub-menu index="2">
+          <el-menu-item index="/film_view">
+            <el-icon><HomeFilled /></el-icon>
+            <span>电影列表</span>
+          </el-menu-item>
+          <el-sub-menu index="2" v-if="data.user.role === 'ADMIN'">
             <template #title>
               <el-icon><Memo /></el-icon>
               <span>信息管理</span>
@@ -46,8 +50,8 @@
               <el-icon><User /></el-icon>
               <span>公告信息</span>
             </el-menu-item>
-          </el-sub-menu>
-          <el-sub-menu index="3">
+          </el-sub-menu >
+          <el-sub-menu index="3" v-if="data.user.role === 'ADMIN'">
             <template #title>
               <el-icon><Memo /></el-icon>
               <span>用户管理</span>
@@ -55,6 +59,10 @@
             <el-menu-item index="/admin">
               <el-icon><User /></el-icon>
               <span>管理员信息</span>
+            </el-menu-item>
+            <el-menu-item index="/user">
+              <el-icon><User /></el-icon>
+              <span>用户信息</span>
             </el-menu-item>
           </el-sub-menu>
           <el-menu-item index="/person">

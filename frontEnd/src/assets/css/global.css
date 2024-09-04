@@ -19,3 +19,16 @@ a {
     padding: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,.1);
 }
+.line1{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.line3{
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}

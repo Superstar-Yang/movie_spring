@@ -13,7 +13,10 @@ const router = createRouter({
         { path: 'home', component: () => import('@/views/manager/Home.vue')},
         { path: 'notice', component: () => import('@/views/manager/Notice.vue')},
         { path: 'admin', component: () => import('@/views/manager/Admin.vue')},
+        { path: 'user', component: () => import('@/views/manager/User.vue')},
         { path: 'film', component: () => import('@/views/manager/Film.vue')},
+        { path: 'detail', component: () => import('@/views/manager/Detail.vue')},
+        { path: 'film_view', component: () => import('@/views/manager/FilmView.vue')},
         { path: 'category', component: () => import('@/views/manager/Category.vue')},
         { path: 'comment', component: () => import('@/views/manager/Comment.vue')},
       ]
