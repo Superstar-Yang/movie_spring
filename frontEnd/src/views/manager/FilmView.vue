@@ -9,7 +9,7 @@
     <el-button :class="{'active':data.categoryId === item.id}" v-for="item in data.cateGoryList" :key="item.id" @click="changeCategory(item.id)">{{ item.name }}
     </el-button>
   </div>
-  <div class="card">
+  <div class="card" style="margin: 5px 0">
     <el-row :gutter="20">
       <el-col :span="6" v-for="item in data.filmData" :key="item.id" @click="goDetail(item.id)">
         <img :src="item.cover" alt="" style="width: 100%;height:400px;border-radius: 10px;cursor: pointer">

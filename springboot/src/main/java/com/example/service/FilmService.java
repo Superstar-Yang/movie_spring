@@ -65,6 +65,15 @@ public class FilmService {
         }
         return filmList;
     }
+
+    public List<Film> selectRanking() {
+        List<Film> filmList = filmMapper.selectAll(null);
+        for (Film film : filmList) {
+            setScore(film);
+        }
+       return  filmList.stream().sorted((f1,f2)->f2.getScore().compareTo(f1.getScore())).limit(5).collect(Collectors.toList());
+    }
+
     public void setScore(Film film){
         int total = commentMapper.selectByTotal(film.getId());
         film.setCommentNum(total);
@@ -77,3 +86,4 @@ public class FilmService {
         }
     }
 }
+

@@ -35,12 +35,12 @@ public class FilmController {
     @GetMapping("/selectAll")
 
     public Result selectAll(Film film) {
-//        ArrayList<Object> list = new ArrayList<>();
-//        Film film =  new Film();
-//        film.setTitle("系统公告");
-//        film.setContent("系统公告内容");
-//        list.add(film);
         List<Film> list = filmService.selectAll(film);
+        return Result.success(list);
+    }
+    @GetMapping("/selectRanking")
+    public Result selectRanking() {
+        List<Film> list = filmService.selectRanking();
         return Result.success(list);
     }
     @GetMapping("/selectById/{id}")

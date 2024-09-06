@@ -39,7 +39,7 @@
 
     <div class="card">
       <el-pagination background :page-sizes=[10,20,30,40] layout=" sizes, prev, pager, next, jumper,->,total"
-                     v-model:page-size="data.pageSize" v-model:current-page="data.pageNum" :total="data.total"/>
+                     v-model:page-size="data.pageSize" v-model:current-page="data.pageNum" :total="data.total" @current-change="load"/>
     </div>
 
     <el-dialog title="系统公告" width="40%" v-model="data.formVisible" :close-on-click-modal="false" destroy-on-close>
@@ -121,3 +121,8 @@ const preview = (comment) => {
 
 load()
 </script>
+<style>
+.image-wrapper img{
+  width: 100%;
+}
+</style>

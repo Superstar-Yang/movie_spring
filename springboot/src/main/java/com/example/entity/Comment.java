@@ -2,7 +2,7 @@ package com.example.entity;
 
 public class Comment {
     private Integer id;
-    private Integer fileId;
+    private Integer filmId;
     private Integer score;
     private String comment;
     private Integer userId;
@@ -10,22 +10,6 @@ public class Comment {
     private String  type;
     private String filmName;
     private String userName;
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getFilmName() {
-        return filmName;
-    }
-
-    public void setFilmName(String filmName) {
-        this.filmName = filmName;
-    }
 
     public Integer getId() {
         return id;
@@ -35,12 +19,12 @@ public class Comment {
         this.id = id;
     }
 
-    public Integer getFileId() {
-        return fileId;
+    public Integer getFilmId() {
+        return filmId;
     }
 
-    public void setFileId(Integer fileId) {
-        this.fileId = fileId;
+    public void setFilmId(Integer filmId) {
+        this.filmId = filmId;
     }
 
     public Integer getScore() {
@@ -83,4 +67,19 @@ public class Comment {
         this.type = type;
     }
 
+    public String getFilmName() {
+        return filmName;
+    }
+
+    public void setFilmName(String filmName) {
+        this.filmName = filmName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }

@@ -4,7 +4,7 @@
       <el-form :model="data.user" label-width="100px" style="padding-right: 50px">
         <div style="margin: 20px 0; text-align: center">
           <el-upload :show-file-list="false" class="avatar-uploader" :action="uploadUrl" :on-success="handleFileUpload">
-            <img v-if="data.user.avatar" :src="data.user.avatar" class="avatar" />
+            <el-avatar shape="circle" v-if="data.user.avatar" :src="data.user.avatar" class="avatar" />
             <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
           </el-upload>
         </div>

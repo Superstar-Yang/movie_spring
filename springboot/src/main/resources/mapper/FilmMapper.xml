@@ -34,7 +34,10 @@
     <select id="selectById" resultType="com.example.entity.Film">
         select film.*, category.name as categoryName
         from film
-                 left join category on film.category_id = category.id
-        where film.id = #{id}
+        left join category on film.category_id= category.id
+        <where>
+            <if test="id !=null">and film.id=#{id}</if>
+        </where>
+        order by film.id desc
     </select>
 </mapper>
